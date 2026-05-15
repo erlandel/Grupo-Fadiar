@@ -1,0 +1,134 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { imageData } from "@/data/dataImegenes";
+
+export default function Carousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const prevSlide = () => {
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? imageData.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const nextSlide = () => {
+    const isLastSlide = currentIndex === imageData.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  };
+
+  useEffect(() => {
+    const slideInterval = setInterval(nextSlide, 5000);
+    return () => clearInterval(slideInterval);
+  }, [currentIndex]);
+
+  return (
+    <div className="h-screen w-full flex flex-col overflow-hidden">
+      {/* Imagen de fondo con overlay */}
+      <div className="relative flex-1">
+        {imageData.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <div
+              style={{ backgroundImage: `url(${slide.url})` }}
+              className="absolute inset-0 bg-center bg-cover"
+            />
+            <div className="absolute inset-0 bg-black/15" />
+          </div>
+        ))}
+
+        {/* Contenido sobre la imagen */}
+        <div className="relative felx   h-full flex flex-col justify-end text-white mx-20 pb-10">
+          {/* Barra inferior: redes sociales + navegación */}
+          <div className="flex flex-col ">
+            <div className="flex gap-4">
+              {/* Redes sociales */}
+              <div className="flex flex-col gap-y-4 justify-end ">
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  className="p-2 rounded-full hover:scale-110 transition-colors"
+                >
+                  <FaInstagram className="w-10 h-10" />
+                </a>
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  className="p-2 rounded-full hover:scale-110 transition-colors"
+                >
+                  <FaFacebook className="w-9 h-9" />
+                </a>
+              </div>
+
+              {/* Título y descripción */}
+              <div className="flex-1 flex flex-col justify-end ">
+                <h2
+                  className={`text-4xl md:text-6xl max-w-xl font-bold ${imageData[currentIndex].titleFont || ""}`}
+                >
+                  {imageData[currentIndex].title}
+                </h2>
+                <div className="mt-8 flex items-end gap-8">
+                  {imageData[currentIndex].showButtons !== false && (
+                    <div className="space-x-4 shrink-0">
+                      <button className="border-3 px-6 py-3 rounded-3xl text-3xl cursor-pointer hover:scale-105">
+                        Promociones
+                      </button>
+                      <button className="bg-white text-dark font-bold px-8 py-4 rounded-full text-3xl transition-transform hover:scale-105 cursor-pointer">
+                        Compra
+                      </button>
+                    </div>
+                  )}
+                  <p
+                    className={`${imageData[currentIndex].showButtons !== false ? "text-5xl" : "text-lg"} max-w-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] ${!imageData[currentIndex].descriptionFont?.startsWith("font-") ? "" : imageData[currentIndex].descriptionFont}`}
+                    style={{
+                      fontFamily: !imageData[
+                        currentIndex
+                      ].descriptionFont?.startsWith("font-")
+                        ? imageData[currentIndex].descriptionFont
+                        : "",
+                    }}
+                  >
+                    {imageData[currentIndex].description}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Línea divisoria + botones de navegación */}
+            <div className="flex items-center w-full">
+              <div className="grow h-1 bg-white mr-10 ml-18"></div>
+              <div className="flex gap-x-8">
+                <button
+                  onClick={prevSlide}
+                  className="group p-2 rounded-full border border-white hover:bg-white transition-all duration-300 cursor-pointer"
+                >
+                  <ChevronLeft
+                    className="w-6 h-6 text-white group-hover:text-blue-900 transition-colors"
+                    strokeWidth={3}
+                  />
+                </button>
+
+                <button
+                  onClick={nextSlide}
+                  className="group p-2 rounded-full border border-white hover:bg-white transition-all duration-300 cursor-pointer"
+                >
+                  <ChevronRight
+                    className="w-6 h-6 text-white group-hover:text-blue-900 transition-colors"
+                    strokeWidth={3}
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
