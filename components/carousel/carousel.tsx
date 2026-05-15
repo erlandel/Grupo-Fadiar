@@ -38,15 +38,17 @@ export default function Carousel() {
             }`}
           >
             <div
-              style={{ backgroundImage: `url(${slide.url})` }}
+              style={{
+                backgroundImage: `linear-gradient(to top, #010A2D, #7594D000 50%), url(${slide.url})`,
+              }}
               className="absolute inset-0 bg-center bg-cover"
             />
-            <div className="absolute inset-0 bg-black/15" />
+            
           </div>
         ))}
 
         {/* Contenido sobre la imagen */}
-        <div className="relative felx   h-full flex items-end  text-white mx-20 pb-10 gap-5">
+        <div className="relative felx   h-full flex items-end  text-white  mx-20 pb-10 gap-5">
           {/* Redes sociales */}
           <div className="flex flex-col gap-y-4 justify-end  pb-2">
             <a
@@ -88,7 +90,7 @@ export default function Carousel() {
                     </h2>
                   )}
                 </div>
-                <div className="mt-8 flex items-end gap-8">
+                <div className="mt-8 flex items-end gap-8  ">
                   {imageData[currentIndex].showButtons !== false && (
                     <div className="space-x-4 shrink-0">
                       <button className="border-3 px-6 py-3 rounded-3xl text-3xl cursor-pointer hover:scale-105">
@@ -100,7 +102,7 @@ export default function Carousel() {
                     </div>
                   )}
                   <p
-                    className={`${imageData[currentIndex].showButtons !== false ? "text-5xl" : "text-3xl"} pb-5  drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] ${!imageData[currentIndex].descriptionFont?.startsWith("font-") ? "" : imageData[currentIndex].descriptionFont}`}
+                    className={`${imageData[currentIndex].showButtons !== false ? "text-5xl " : "text-3xl max-w-270 "} pb-5   ${!imageData[currentIndex].descriptionFont?.startsWith("font-") ? "" : imageData[currentIndex].descriptionFont}`}
                     style={{
                       fontFamily: !imageData[
                         currentIndex
