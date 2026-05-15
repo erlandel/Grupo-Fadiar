@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { imageData } from "@/data/dataImegenes";
 
@@ -45,35 +46,48 @@ export default function Carousel() {
         ))}
 
         {/* Contenido sobre la imagen */}
-        <div className="relative felx   h-full flex flex-col justify-end text-white mx-20 pb-10">
+        <div className="relative felx   h-full flex items-end  text-white mx-20 pb-10 gap-5">
+          {/* Redes sociales */}
+          <div className="flex flex-col gap-y-4 justify-end  pb-2">
+            <a
+              href="#"
+              aria-label="Instagram"
+              className="p-2 rounded-full hover:scale-110 transition-colors"
+            >
+              <FaInstagram className="w-10 h-10" />
+            </a>
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="p-2 rounded-full hover:scale-110 transition-colors"
+            >
+              <FaFacebook className="w-9 h-9" />
+            </a>
+          </div>
           {/* Barra inferior: redes sociales + navegación */}
-          <div className="flex flex-col ">
-            <div className="flex gap-4">
-              {/* Redes sociales */}
-              <div className="flex flex-col gap-y-4 justify-end ">
-                <a
-                  href="#"
-                  aria-label="Instagram"
-                  className="p-2 rounded-full hover:scale-110 transition-colors"
-                >
-                  <FaInstagram className="w-10 h-10" />
-                </a>
-                <a
-                  href="#"
-                  aria-label="Facebook"
-                  className="p-2 rounded-full hover:scale-110 transition-colors"
-                >
-                  <FaFacebook className="w-9 h-9" />
-                </a>
-              </div>
-
+          <div className="flex flex-col  w-full">
+            <div className="flex gap-4 mb-10">
               {/* Título y descripción */}
               <div className="flex-1 flex flex-col justify-end ">
-                <h2
-                  className={`text-4xl md:text-6xl max-w-xl font-bold ${imageData[currentIndex].titleFont || ""}`}
-                >
-                  {imageData[currentIndex].title}
-                </h2>
+                <div className="h-24 flex items-center">
+                  {imageData[currentIndex].title.startsWith("/images/") ? (
+                    <Image
+                      src={imageData[currentIndex].title}
+                      alt={imageData[currentIndex].description}
+                      width={300}
+                      height={100}
+                      className="object-contain h-full w-auto"
+                    />
+                  ) : (
+                    <h2
+                      className={`text-4xl md:text-7xl font-montserrat ${
+                        imageData[currentIndex].titleFont || ""
+                      }`}
+                    >
+                      {imageData[currentIndex].title}
+                    </h2>
+                  )}
+                </div>
                 <div className="mt-8 flex items-end gap-8">
                   {imageData[currentIndex].showButtons !== false && (
                     <div className="space-x-4 shrink-0">
@@ -86,13 +100,13 @@ export default function Carousel() {
                     </div>
                   )}
                   <p
-                    className={`${imageData[currentIndex].showButtons !== false ? "text-5xl" : "text-lg"} max-w-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] ${!imageData[currentIndex].descriptionFont?.startsWith("font-") ? "" : imageData[currentIndex].descriptionFont}`}
+                    className={`${imageData[currentIndex].showButtons !== false ? "text-5xl" : "text-3xl"} pb-5  drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] ${!imageData[currentIndex].descriptionFont?.startsWith("font-") ? "" : imageData[currentIndex].descriptionFont}`}
                     style={{
                       fontFamily: !imageData[
                         currentIndex
                       ].descriptionFont?.startsWith("font-")
-                        ? imageData[currentIndex].descriptionFont
-                        : "",
+                        ? `"${imageData[currentIndex].descriptionFont}"`
+                        : undefined,
                     }}
                   >
                     {imageData[currentIndex].description}
@@ -103,7 +117,7 @@ export default function Carousel() {
 
             {/* Línea divisoria + botones de navegación */}
             <div className="flex items-center w-full">
-              <div className="grow h-1 bg-white mr-10 ml-18"></div>
+              <div className="grow h-1 bg-white mr-10 "></div>
               <div className="flex gap-x-8">
                 <button
                   onClick={prevSlide}

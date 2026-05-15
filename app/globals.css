@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Flatlion Personal Use Only";
+  src: url("/fonts/Flatlion Personal Use Only.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  size-adjust: 400%;
+}
 
 :root {
   --background: #ffffff;
@@ -14,6 +22,10 @@
   --color-dark:#010A2D;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-montserrat: var(--font-montserrat);
+  --font-signature: var(--font-signature);
+  --font-vital: var(--font-vital);
+  --font-open: var(--font-open-sans);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Montserrat, Dancing_Script } from "next/font/google";
+// 1. Añadimos Comfortaa a la importación
+import { Geist, Geist_Mono, Montserrat, Dancing_Script, Varela_Round, Satisfy, Open_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header/header";
 
-// Fuentes base de Next.js
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const vital = Satisfy({
+  variable: "--font-vital",
+  subsets: ["latin"],
+  weight: ["400"], // Satisfy solo tiene un peso, pero es gordita.
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -14,7 +21,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// 1. Montserrat para títulos (BIENVENIDO, EON, etc.)
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
@@ -22,13 +28,19 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-// 2. Dancing Script para el estilo manuscrito (Sientete familiar)
+const openSans = Open_Sans({
+  variable: "--font-open-sans", // Define la variable
+  subsets: ["latin"],
+});
+
 const signature = Dancing_Script({
   variable: "--font-signature",
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "swap",
 });
+
+
 
 export const metadata: Metadata = {
   title: "Grupo Fadiar",
@@ -43,7 +55,8 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${signature.variable} h-full antialiased`}
+      /* 3. Inyectamos la variable de Vital aquí */
+      className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${signature.variable} ${vital.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
         <Header />
