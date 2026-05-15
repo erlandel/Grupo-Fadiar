@@ -33,8 +33,10 @@ export default function Carousel() {
         {imageData.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentIndex ? "opacity-100" : "opacity-0"
+            className={`absolute inset-0 transition-all duration-1000 ease-out ${
+              index === currentIndex
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-105"
             }`}
           >
             <div
@@ -43,12 +45,11 @@ export default function Carousel() {
               }}
               className="absolute inset-0 bg-center bg-cover"
             />
-            
           </div>
         ))}
 
         {/* Contenido sobre la imagen */}
-        <div className="relative felx   h-full flex items-end  text-white  mx-20 pb-10 gap-5">
+        <div className="relative felx   h-full flex items-end  text-white  mx-20 pb-8 gap-5">
           {/* Redes sociales */}
           <div className="flex flex-col gap-y-4 justify-end  pb-2">
             <a
@@ -68,10 +69,12 @@ export default function Carousel() {
           </div>
           {/* Barra inferior: redes sociales + navegación */}
           <div className="flex flex-col  w-full">
-            <div className="flex gap-4 mb-10">
+            <div
+              className={`flex gap-4 ${imageData[currentIndex].showButtons !== false ? "mb-10" : "mb-5"}`}
+            >
               {/* Título y descripción */}
-              <div className="flex-1 flex flex-col justify-end ">
-                <div className="h-24 flex items-center">
+              <div className="flex-1 flex flex-col justify-end">
+                <div className="h-22 flex items-center">
                   {imageData[currentIndex].title.startsWith("/images/") ? (
                     <Image
                       src={imageData[currentIndex].title}
@@ -82,7 +85,7 @@ export default function Carousel() {
                     />
                   ) : (
                     <h2
-                      className={`text-4xl md:text-7xl font-montserrat ${
+                      className={`text-4xl md:text-[70px] font-montserrat ${
                         imageData[currentIndex].titleFont || ""
                       }`}
                     >
@@ -90,10 +93,10 @@ export default function Carousel() {
                     </h2>
                   )}
                 </div>
-                <div className="mt-8 flex items-end gap-8  ">
+                <div className="flex items-end gap-8">
                   {imageData[currentIndex].showButtons !== false && (
-                    <div className="space-x-4 shrink-0">
-                      <button className="border-3 px-6 py-3 rounded-3xl text-3xl cursor-pointer hover:scale-105">
+                    <div className="space-x-4 shrink-0 mt-8">
+                      <button className="border-3 px-6 py-3 rounded-4xl text-3xl cursor-pointer hover:scale-105">
                         Promociones
                       </button>
                       <button className="bg-white text-dark font-bold px-8 py-4 rounded-full text-3xl transition-transform hover:scale-105 cursor-pointer">
@@ -102,7 +105,7 @@ export default function Carousel() {
                     </div>
                   )}
                   <p
-                    className={`${imageData[currentIndex].showButtons !== false ? "text-5xl " : "text-3xl max-w-270 "} pb-5   ${!imageData[currentIndex].descriptionFont?.startsWith("font-") ? "" : imageData[currentIndex].descriptionFont}`}
+                    className={`${imageData[currentIndex].showButtons !== false ? "text-5xl pb-3" : "text-[22px] max-w-200 mt-2"} ${!imageData[currentIndex].descriptionFont?.startsWith("font-") ? "" : imageData[currentIndex].descriptionFont}`}
                     style={{
                       fontFamily: !imageData[
                         currentIndex
