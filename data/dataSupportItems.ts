@@ -1,4 +1,4 @@
-import { Award, Brain, CheckCircle, Cog } from "lucide-react";
+import { Award, Brain, BadgeCheck, Cog } from "lucide-react";
 
 export interface SupportItem {
   id: number;
@@ -34,6 +34,6 @@ export const supportItems: SupportItem[] = [
     title: 'Garantía',
     description:
       'Respaldamos la excelencia de nuestros productos con una garantía integral. Este compromiso es la manifestación de nuestra confianza y ofrece a nuestros clientes una seguridad absoluta.',
-    icon: CheckCircle,
+    icon: BadgeCheck,
   },
 ];
