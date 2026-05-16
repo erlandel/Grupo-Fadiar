@@ -17,7 +17,7 @@ export const Header = () => {
 
   useEffect(() => {
     if (!isHomePage) {
-      setIsScrolled(true); // On other pages, header is always "scrolled"
+      setIsScrolled(true);
       return;
     }
 
@@ -30,7 +30,6 @@ export const Header = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    // Initial check
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -41,44 +40,46 @@ export const Header = () => {
     z-50 
     transition-colors 
     duration-300
-    ${isHomePage ? 'fixed bg-white/40 backdrop-blur-sm  shadow-lg shadow-b' : 'sticky top-0'}
-    ${isScrolled ? 'bg-white/30 backdrop-blur-md shadow-lg shadow-b' : 'bg-transparent'}
+    ${isHomePage ? "fixed bg-white/40 backdrop-blur-sm shadow-lg shadow-b" : "sticky top-0"}
+    ${isScrolled ? "bg-white/30 backdrop-blur-md shadow-lg shadow-b" : "bg-transparent"}
   `;
 
   return (
-<header className={headerClasses}>
-  {/* Menú móvil */}
-  <MenuMovile isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+    <>
+      {/* Fuera del header para evitar que backdrop-filter atrape los fixed hijos */}
+      <MenuMovile isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
-  <nav className="w-full flex items-center justify-between py-4  text-sm">
-    {/* ✅ Wrapper que controla el padding de forma explícita */}
-    <div className="flex items-center justify-between w-full px-10 2xl:px-20">
-      
-      <div className="hidden xl:block">
-        <Link href="/">
-          <Image src="/logo.svg" alt="Grupo Fadiar Logo" width={125} height={20} />
-        </Link>
-      </div>
+      <header className={headerClasses}>
+        <nav className="w-full flex items-center justify-between py-4 text-sm">
+          <div className="flex items-center justify-between w-full px-10 2xl:px-20">
 
-      {/* Mobile */}
-      <div className="xl:hidden flex items-center justify-between w-full">
-        <div className="cursor-pointer" onClick={() => setIsMenuOpen(true)}>
-          <MenuIcon className="h-7 w-7 text-dark" strokeWidth={2} />
-        </div>
-        <div className="cursor-pointer">
-          <Search className="h-7 w-7 text-dark" strokeWidth={2} />
-        </div>
-      </div>
+            <div className="hidden xl:block">
+              <Link href="/">
+                <Image src="/logo.svg" alt="Grupo Fadiar Logo" width={125} height={20} />
+              </Link>
+            </div>
 
-      {/* Desktop */}
-      <div className="hidden xl:flex gap-10 items-center">
-        <Menu />
-        <div className="cursor-pointer">
-          <Search className="h-7 w-7 text-dark" strokeWidth={2} />
-        </div>
-      </div>
-    </div>
-  </nav>
-</header>
+            {/* Mobile */}
+            <div className="xl:hidden flex items-center justify-between w-full">
+              <div className="cursor-pointer" onClick={() => setIsMenuOpen(true)}>
+                <MenuIcon className="h-7 w-7 text-dark" strokeWidth={2} />
+              </div>
+              <div className="cursor-pointer">
+                <Search className="h-7 w-7 text-dark" strokeWidth={2} />
+              </div>
+            </div>
+
+            {/* Desktop */}
+            <div className="hidden xl:flex gap-10 items-center">
+              <Menu />
+              <div className="cursor-pointer">
+                <Search className="h-7 w-7 text-dark" strokeWidth={2} />
+              </div>
+            </div>
+
+          </div>
+        </nav>
+      </header>
+    </>
   );
 };
