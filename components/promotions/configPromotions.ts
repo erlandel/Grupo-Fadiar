@@ -13,7 +13,7 @@ export type LayoutConfig = {
 };
 
 export const items: MediaItem[] = [
-  { type: "image", src: "/images/imagesPromotions/1.png" },
+   { type: "image", src: "/images/imagesPromotions/1.png" },
   { type: "image", src: "/images/imagesPromotions/2.png" },
   { type: "image", src: "/images/imagesPromotions/3.png" },
   { type: "image", src: "/images/imagesPromotions/4.png" },

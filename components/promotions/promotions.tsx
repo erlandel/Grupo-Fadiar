@@ -4,7 +4,6 @@ import { Download, Maximize2 } from "lucide-react";
 import { items, layoutConfig } from "./configPromotions";
 import { MediaRenderer } from "./mediaRenderer";
 
-
 export default function Promotions() {
   const [fullscreenSrc, setFullscreenSrc] = useState<string | null>(null);
 
@@ -49,7 +48,10 @@ export default function Promotions() {
                 key={i}
                 className={`relative group overflow-hidden shadow-lg ${wrapper} ${self}`}
               >
-                <MediaRenderer item={item} />
+                <MediaRenderer
+                  item={item}
+                  priority={i < 2}
+                />
                 <ActionButtons src={item.src} />
               </div>
             );
@@ -57,7 +59,6 @@ export default function Promotions() {
         </div>
       </div>
 
-      {/* Modal pantalla completa */}
       {fullscreenSrc !== null && (
         <div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
@@ -73,7 +74,13 @@ export default function Promotions() {
             ✕
           </button>
           <div className="relative w-full h-full max-w-[90%] max-h-[90vh]">
-            <MediaRenderer item={{ type: "image", src: fullscreenSrc }} className="object-cover rounded-xl" />
+            <MediaRenderer
+              item={{ type: "image", src: fullscreenSrc }}
+              quality={100}
+              priority
+              sizes="90vw"
+              className="object-contain rounded-xl"
+            />
           </div>
         </div>
       )}

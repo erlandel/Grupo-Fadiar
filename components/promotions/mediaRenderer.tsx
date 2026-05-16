@@ -1,13 +1,15 @@
-// MediaRenderer.tsx
 import Image from "next/image";
 import { MediaItem } from "./configPromotions";
 
 type Props = {
   item: MediaItem;
   className?: string;
+  quality?: number;
+  priority?: boolean;
+  sizes?: string;
 };
 
-export const MediaRenderer = ({ item, className }: Props) => {
+export const MediaRenderer = ({ item, className, quality = 85, priority = false, sizes = "(max-width: 768px) 100vw, 50vw" }: Props) => {
   if (item.type === "video") {
     return (
       <video
@@ -25,8 +27,9 @@ export const MediaRenderer = ({ item, className }: Props) => {
       src={item.src}
       alt="Promoción"
       fill
-      sizes="90vw"
-      priority
+      quality={quality}
+      priority={priority}
+      sizes={sizes}
       className={`object-cover group-hover:scale-110 transition-transform duration-300 ${className ?? ""}`}
     />
   );
