@@ -1,17 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { Search } from "lucide-react";
+import { Search, Menu as MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Menu } from "../menu/menu";
+import MenuMovile from "../menu/menuMovile";
 
 export const Header = () => {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!isHomePage) {
@@ -44,27 +46,39 @@ export const Header = () => {
   `;
 
   return (
-    <header className={headerClasses}>
-      <nav className="w-full flex items-center justify-between px-10 2xl:px-20 py-4 text-sm">
-        <div>
-          <Link href="/">
-            <Image
-              src="/logo.svg"
-              alt="Grupo Fadiar Logo"
-              width={125}
-              height={20}
-            />
-          </Link>
+<header className={headerClasses}>
+  {/* Menú móvil */}
+  <MenuMovile isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+
+  <nav className="w-full flex items-center justify-between py-4  text-sm">
+    {/* ✅ Wrapper que controla el padding de forma explícita */}
+    <div className="flex items-center justify-between w-full px-10 2xl:px-20">
+      
+      <div className="hidden xl:block">
+        <Link href="/">
+          <Image src="/logo.svg" alt="Grupo Fadiar Logo" width={125} height={20} />
+        </Link>
+      </div>
+
+      {/* Mobile */}
+      <div className="xl:hidden flex items-center justify-between w-full">
+        <div className="cursor-pointer" onClick={() => setIsMenuOpen(true)}>
+          <MenuIcon className="h-7 w-7 text-dark" strokeWidth={2} />
         </div>
-        <div className="flex gap-10">
-          <div>
-            <Menu />
-          </div>
-          <div className="cursor-pointer">
-            <Search className="h-7 w-7 text-dark" strokeWidth={2} />
-          </div>
+        <div className="cursor-pointer">
+          <Search className="h-7 w-7 text-dark" strokeWidth={2} />
         </div>
-      </nav>
-    </header>
+      </div>
+
+      {/* Desktop */}
+      <div className="hidden xl:flex gap-10 items-center">
+        <Menu />
+        <div className="cursor-pointer">
+          <Search className="h-7 w-7 text-dark" strokeWidth={2} />
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
   );
 };

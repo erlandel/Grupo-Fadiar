@@ -1,0 +1,70 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { X } from "lucide-react";
+import { usePathname } from "next/navigation";
+
+const links = [
+  { href: "/", label: "Inicio" },
+  { href: "/fadiarGroup", label: "Grupo Fadiar" },
+  { href: "/ourBrands", label: "Nuestras marcas" },
+  { href: "/Promotions", label: "Promociones", className: "font-bold" },
+  { href: "/SupportAndWarranty", label: "Soporte y Garantía" },
+  { href: "/Contacts", label: "Contactos" },
+];
+
+interface MenuMovileProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function MenuMovile({ isOpen, onClose }: MenuMovileProps) {
+  const pathname = usePathname();
+
+  if (!isOpen) return null;
+
+  return (
+    <>
+      <div className="fixed inset-0 z-40 " onClick={onClose} />
+      <div className="fixed top-0 left-0 w-6/7 h-auto bg-white/80 backdrop-blur-2xl  z-50 p-4 shadow-2xl rounded-xl ">
+        <div className="flex items-center justify-between">
+
+          <Image src="/logo.svg" alt="Grupo Fadiar Logo" width={125} height={20} />
+          <button onClick={onClose}>
+            <X className="h-7 w-7 text-dark" strokeWidth={2} />
+          </button>
+        </div>
+
+        <div className="h-px bg-black mt-4"></div>
+
+        <div className="mt-4">
+          <nav>
+            <ul className="flex flex-col space-y-2 font-bold">
+              {links.map(({ href, label, className }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    onClick={onClose}
+                    className={`block text-lg  transition-colors px-4 py-2 rounded-md ${
+                      className ?? ""
+                    } ${
+                      pathname === href
+                        ? "bg-dark text-secondary"
+                        : "text-slate-800 hover:text-secondary"
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
+
+
+      </div>
+    </>
+  );
+}
