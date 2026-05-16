@@ -9,7 +9,7 @@ export default function DiscoverOurGroup() {
         <div className="flex justify-center  w-3/5">
           <div>
             <div>
-              <h2 className="text-[50px] font-bold font-montserrat text-dark">
+              <h2 className="text-[50px] font-black font-montserrat text-dark">
                 DESCUBRE NUESTRO GRUPO Y SU GENTE
               </h2>
               <p className="text-xl mt-10">

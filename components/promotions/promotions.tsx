@@ -36,7 +36,7 @@ export default function Promotions() {
   return (
     <section className="w-full py-16 overflow-hidden bg-white">
       <div>
-        <h3 className="text-5xl font-bold mb-12 ml-6 md:ml-20 text-gray-900">
+        <h3 className="text-5xl font-black mb-12 ml-6 md:ml-20 text-gray-900">
           Promociones
         </h3>
 

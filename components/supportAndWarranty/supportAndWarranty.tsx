@@ -20,7 +20,7 @@ export default function SupportAndWarranty() {
               <div key={item.id} className="flex gap-4 ">
                 {/* Icon + Title */}
                   <IconComponent className="w-18 h-18 text-dark shrink-0" />
-                <div className="flex flex-col  gap-3 mb-4">
+                <div className="flex flex-col  gap-3 mb-4 mt-4">
                   <h3 className="text-3xl font-bold text-dark">{item.title}</h3>
                 <p className="text-gray-700 text-xl leading-relaxed">{item.description}</p>
                 </div>
