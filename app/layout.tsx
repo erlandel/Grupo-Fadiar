@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Montserrat, Dancing_Script, Varela_Round, Satisfy, Open_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header/header";
+import Footer from "@/components/footer/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,10 +60,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${signature.variable} ${vital.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <Header />
+        <Header />        
         <main className="grow">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
