@@ -56,7 +56,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-dark text-white py-12 px-4 md:px-8 xl:px-20">
-      <div className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 border-b-2 border-white pb-8 mb-8">
+      <div className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 border-b-2 border-white pb-8 mb-6">
         {/* Sección de Logo y Contactos */}
         <div className="flex flex-col  lg:col-span-1">
           <div>
@@ -64,7 +64,7 @@ export default function Footer() {
               <Image
                 src="/logoWithe.svg"
                 alt="Grupo Fadiar Logo"
-                width={212}
+                width={150}
                 height={40}
               />
             </div>
@@ -90,7 +90,7 @@ export default function Footer() {
         {/* Secciones de Enlaces */}
         {footerLinks.map((section, index) => (
           <div key={index} className="flex flex-col items-start">
-            <h4 className="text-secondary text-xl font-semibold mb-4">
+            <h4 className="text-secondary text-xl font-semibold mb-6">
               {section.title}
             </h4>
             <ul className="space-y-2">
@@ -111,7 +111,7 @@ export default function Footer() {
 
       {/* Sección Legal y Versión */}
       <div className=" flex flex-col md:flex-row justify-between items-center text-sm text-white/70">
-        <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-4 md:mb-0">
+        <div className="flex flex-wrap justify-center md:justify-start gap-10 mb-4 md:mb-0">
           {legalLinks.map((link, index) => (
             <Link
               key={index}
