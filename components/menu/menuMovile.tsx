@@ -33,7 +33,7 @@ export default function MenuMovile({ isOpen, onClose }: MenuMovileProps) {
       />
 
       {/* Panel del menú */}
-      <div className="fixed top-0 left-0 w-6/8 h-auto bg-white/80 backdrop-blur-2xl z-150 p-4 shadow-2xl rounded-xl m-1">
+      <div className="fixed top-0 left-0 w-6/8 h-auto bg-white/30 backdrop-blur-2xl z-150 p-4 shadow-2xl rounded-xl m-1">
         <div className="flex items-center justify-between">
           <Image src="/logo.svg" alt="Grupo Fadiar Logo" width={125} height={20} />
           <button onClick={onClose}>
