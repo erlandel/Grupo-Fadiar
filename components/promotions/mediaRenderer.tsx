@@ -9,7 +9,7 @@ type Props = {
   sizes?: string;
 };
 
-export const MediaRenderer = ({ item, className, quality = 85, priority = false, sizes = "(max-width: 768px) 100vw, 50vw" }: Props) => {
+export const MediaRenderer = ({ item, className, quality = 75, priority = false, sizes = "(max-width: 768px) 100vw, 50vw" }: Props) => {
   if (item.type === "video") {
     return (
       <video
