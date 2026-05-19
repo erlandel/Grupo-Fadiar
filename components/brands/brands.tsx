@@ -5,7 +5,7 @@ import CardProduct from '../cardProduct/cardProduct';
 export default function Brands() {
   return (
     <>
-      <div className="w-full bg-linear-to-br from-[#1D3D75] via-dark to-dark py-16">
+      <section className="w-full bg-linear-to-br from-[#1D3D75] via-dark to-dark py-16">
         <div className="flex items-center justify-center text-white font-bold">
           <div>
             <h2 className="text-secondary text-center text-3xl">Nuestras marcas </h2>
@@ -28,7 +28,7 @@ export default function Brands() {
             />
           ))}
         </div>
-      </div>
+      </section>
     </>
   );
 }

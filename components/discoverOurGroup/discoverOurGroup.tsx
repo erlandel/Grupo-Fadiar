@@ -5,7 +5,7 @@ import { FaCheck } from "react-icons/fa";
 export default function DiscoverOurGroup() {
   return (
     <>
-      <div className="flex justify-center mx-20">
+      <section className="flex justify-center mx-20">
         <div className="flex justify-center  w-3/5">
           <div>
             <div>
@@ -49,7 +49,7 @@ export default function DiscoverOurGroup() {
             className="w-120 h-auto object-contain"
           />
         </div>
-      </div>
+      </section>
     </>
   );
 }

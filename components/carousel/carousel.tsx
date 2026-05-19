@@ -27,7 +27,7 @@ export default function Carousel() {
   }, [currentIndex]);
 
   return (
-    <div className="h-screen w-full flex flex-col overflow-hidden">
+    <section className="h-screen w-full flex flex-col overflow-hidden">
       {/* Imagen de fondo con overlay */}
       <div className="relative flex-1">
         {imageData.map((slide, index) => (
@@ -148,6 +148,6 @@ export default function Carousel() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

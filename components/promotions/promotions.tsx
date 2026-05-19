@@ -15,7 +15,7 @@ export default function Promotions() {
   };
 
   const ActionButtons = ({ src }: { src: string }) => (
-    <div className="absolute bottom-4 right-4 flex gap-3 z-10">
+    <section className="absolute bottom-4 right-4 flex gap-3 z-10">
       <button
         onClick={() => handleDownload(src)}
         className="p-2.5 bg-black/70 hover:bg-black/90 rounded-full transition-all duration-200 text-white hover:scale-110 cursor-pointer backdrop-blur-sm"
@@ -30,7 +30,7 @@ export default function Promotions() {
       >
         <Maximize2 className="w-5 h-5" />
       </button>
-    </div>
+    </section>
   );
 
   return (
