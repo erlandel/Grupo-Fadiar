@@ -20,7 +20,7 @@ export default function CardProduct({
   description,
 }: CardProductProps) {
   return (
-    <div className="group relative flex flex-col w-[292px] h-[362px] bg-white/5 rounded-xl p-4 overflow-hidden transform transition-transform duration-300 hover:scale-115">
+    <div className="group relative flex flex-col w-73 h-90.5 bg-white/5 rounded-xl p-4 overflow-hidden transform transition-transform duration-300 hover:scale-115">
       {/* Diseño Original */}
       <div className="shrink-0 group-hover:opacity-0 transition-opacity duration-300">
         <Image
