@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 const links = [
   { href: "/", label: "Inicio" },
-  { href: "/fadiarGroup", label: "Grupo Fadiar" },
+  { href: "/aboutUs", label: "Grupo Fadiar" },
   { href: "/ourBrands", label: "Nuestras marcas" },
   { href: "/Promotions", label: "Promociones"},
   { href: "/SupportAndWarranty", label: "Soporte y Garantía" },

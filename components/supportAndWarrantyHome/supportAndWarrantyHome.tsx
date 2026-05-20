@@ -1,6 +1,6 @@
 import { supportItems } from "@/data/dataSupportItems";
 
-export default function SupportAndWarranty() {
+export default function SupportAndWarrantyHome() {
   return (
     <section className="w-full py-16 px-4 bg-white">
       <div className="mx-20">
