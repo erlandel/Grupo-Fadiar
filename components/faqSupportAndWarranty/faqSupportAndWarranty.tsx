@@ -38,7 +38,7 @@ export default function FaqSupportAndWarranty() {
       <h2 className="text-5xl font-bold mb-6 text-dark">
         Preguntas frecuentes
       </h2>
-      <div className="flex flex-col gap-4 ">
+      <div className="flex flex-col gap-4 mt-15 ">
         {faqItems.map((item, index) => (
           <div
             key={index}
